@@ -1,0 +1,93 @@
+﻿@model WorkshopUsuarios.Models.Usuario
+
+@{
+    ViewBag.Title = "Mantenimiento de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Usuarios</h2>
+
+<br/>
+
+@Html.ActionLink("<< Regresar a la Búsqueda de Usuarios","Index")
+
+<br/><br />
+
+@if (!string.IsNullOrEmpty(ViewBag.MensajeSatisfactorio))
+{
+    <div class="alert alert-success" role="alert">@ViewBag.MensajeSatisfactorio</div>
+}
+
+@using (Html.BeginForm("GrabarUsuario","Usuario"))
+{
+    @Html.ValidationSummary(false)
+    
+    @Html.HiddenFor(x=> x.Id)
+    
+    <table class="table">
+        <tr>
+            <th>
+                Nombre:
+            </th>
+            <td>
+                @Html.TextBoxFor(x=> x.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Apellido Paterno:
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.ApellidoPaterno)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Apellido Materno:
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.ApellidoMaterno)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Edad:
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.Edad)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Email:
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.Email)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Login:
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.Login)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Password:
+            </th>
+            <td>
+                @Html.PasswordFor(x => x.Password)
+            </td>
+        </tr>
+    </table>
+
+    <button type="submit" value="Grabar">Grabar</button>
+    <button type="reset" value="Cancelar">Cancelar</button>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

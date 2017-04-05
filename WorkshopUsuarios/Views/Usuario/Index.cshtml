@@ -1,0 +1,97 @@
+﻿@model List<WorkshopUsuarios.Models.Usuario>
+
+@{
+    ViewBag.Title = "Búsqueda de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Búsqueda de Usuarios</h2>
+
+<br />
+
+@using (Html.BeginForm("Grabar", "Usuario"))
+{
+    <input type="submit" value="Nuevo Usuario" />
+}
+
+<br/>
+
+@using (Html.BeginForm("Buscar", "Usuario",FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <td>
+                @Html.Label("Nombre:")
+            </td>
+            <td>
+                @Html.TextBox("nombre")
+            </td>
+            <td>
+                @Html.Label("Login:")
+            </td>
+            <td>
+                @Html.TextBox("Login")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="submit" value="Buscar" />
+            </td>
+        </tr>
+    </table>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido Paterno
+            </th>
+            <th>
+                Apellido Materno
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Login
+            </th>
+        </tr>
+    </thead>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @Html.ActionLink(usuario.Id.ToString(), "Actualizar", "Usuario", new { id = usuario.Id },null)
+                </th>
+                <td>
+                    @usuario.Nombre
+                </td>
+                <td>
+                    @usuario.ApellidoPaterno
+                </td>
+                <td>
+                    @usuario.ApellidoMaterno
+                </td>
+                <td>
+                    @usuario.Edad
+                </td>
+                <td>
+                    @usuario.Email
+                </td>
+                <td>
+                    @usuario.Login
+                </td>
+            </tr>
+        }
+</table>
+
