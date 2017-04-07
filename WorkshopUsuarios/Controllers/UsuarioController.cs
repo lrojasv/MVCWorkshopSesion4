@@ -122,15 +122,16 @@ namespace WorkshopUsuarios.Controllers
         }
 
         [AllowAnonymous]
-        public ViewResult Login()
+        public ViewResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult IniciarSesion(Usuario usuario)
+        public ActionResult IniciarSesion(Usuario usuario, string returnUrl)
         {
             if (usuario.Login == "lrojas" && usuario.Password == "luis")
             {
@@ -139,21 +140,37 @@ namespace WorkshopUsuarios.Controllers
                 var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
                 var usuarioClaim = new Claim(ClaimTypes.Name, usuario.Login);
                 identity.AddClaim(usuarioClaim);
-                //var identity = new ClaimsIdentity(new[] {
-                //            new Claim(ClaimTypes.Name, usuario.Login),
-                //        },
-                //        DefaultAuthenticationTypes.ApplicationCookie,
-                //        ClaimTypes.Name, ClaimTypes.Role);
                 AuthenticationManager.SignIn(new AuthenticationProperties
                 {
                     IsPersistent = false
                 }, identity);
 
 
-                return RedirectToAction("Index");
+                return RedirectToLocal(returnUrl);
             }
 
             return View("NoAutorizado");
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult CerrarSesion()
+        {
+            FormsAuthentication.SignOut();
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Login");
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         private IAuthenticationManager AuthenticationManager
