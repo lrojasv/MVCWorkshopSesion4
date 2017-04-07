@@ -3,9 +3,16 @@ using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using WorkshopUsuarios.Models;
+using System.Web.Security;
+using System;
+using System.Web;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
 
 namespace WorkshopUsuarios.Controllers
 {
+    [Authorize]
     public class UsuarioController : Controller
     {
 
@@ -113,5 +120,49 @@ namespace WorkshopUsuarios.Controllers
                 }
             };
         }
-	}
+
+        [AllowAnonymous]
+        public ViewResult Login()
+        {
+            return View();
+        }
+
+        
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult IniciarSesion(Usuario usuario)
+        {
+            if (usuario.Login == "lrojas" && usuario.Password == "luis")
+            {
+                FormsAuthentication.SetAuthCookie(usuario.Login, true);
+
+                var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
+                var usuarioClaim = new Claim(ClaimTypes.Name, usuario.Login);
+                identity.AddClaim(usuarioClaim);
+                //var identity = new ClaimsIdentity(new[] {
+                //            new Claim(ClaimTypes.Name, usuario.Login),
+                //        },
+                //        DefaultAuthenticationTypes.ApplicationCookie,
+                //        ClaimTypes.Name, ClaimTypes.Role);
+                AuthenticationManager.SignIn(new AuthenticationProperties
+                {
+                    IsPersistent = false
+                }, identity);
+
+
+                return RedirectToAction("Index");
+            }
+
+            return View("NoAutorizado");
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+    }
 }
