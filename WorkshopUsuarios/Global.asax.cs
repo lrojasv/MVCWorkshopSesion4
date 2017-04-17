@@ -7,6 +7,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WorkshopUsuarios.Controllers;
 
 namespace WorkshopUsuarios
 {
@@ -20,6 +21,10 @@ namespace WorkshopUsuarios
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+            ControllerBuilder.Current.SetControllerFactory(new DefaultControllerFactory(new LocalizedControllerActivator()));
         }
+
+
     }
 }
+

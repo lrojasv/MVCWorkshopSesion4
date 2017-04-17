@@ -1,17 +1,18 @@
-﻿@model List<WorkshopUsuarios.Models.Usuario>
+﻿@using WorkshopUsuarios.Resources
+@model List<WorkshopUsuarios.Models.Usuario>
 
 @{
     ViewBag.Title = "Búsqueda de Usuarios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Búsqueda de Usuarios</h2>
+<h2>@Usuarios.TituloBuscaUsuario</h2>
 
 <br />
 
 @using (Html.BeginForm("Grabar", "Usuario"))
 {
-    <input type="submit" value="Nuevo Usuario" />
+    <input type="submit" value="@Usuarios.TextoBotonNuevoUsuario" />
 }
 
 <br/>
@@ -21,7 +22,7 @@
     <table class="table">
         <tr>
             <td>
-                @Html.Label("Nombre:")
+                @Html.Label(@Usuarios.TextoNombre + ":")
             </td>
             <td>
                 @Html.TextBox("nombre")
@@ -35,7 +36,7 @@
         </tr>
         <tr>
             <td colspan="4">
-                <input type="submit" value="Buscar" />
+                <input type="submit" value="@Usuarios.TextoBuscar" />
             </td>
         </tr>
     </table>
@@ -48,19 +49,19 @@
                 Id
             </th>
             <th>
-                Nombre
+                @Usuarios.TextoNombre
             </th>
             <th>
-                Apellido Paterno
+                @Usuarios.TextoApellidoPaterno
             </th>
             <th>
-                Apellido Materno
+                @Usuarios.TextoApellidoMaterno
             </th>
             <th>
-                Edad
+                @Usuarios.TextoEdad
             </th>
             <th>
-                Email
+                @Usuarios.TextoEmail
             </th>
             <th>
                 Login

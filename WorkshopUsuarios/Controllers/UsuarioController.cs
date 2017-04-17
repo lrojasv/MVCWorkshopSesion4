@@ -9,6 +9,8 @@ using System.Web;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
+using System.Globalization;
+using System.Threading;
 
 namespace WorkshopUsuarios.Controllers
 {
@@ -127,8 +129,7 @@ namespace WorkshopUsuarios.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        
+     
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult IniciarSesion(Usuario usuario, string returnUrl)
@@ -152,7 +153,6 @@ namespace WorkshopUsuarios.Controllers
             return View("NoAutorizado");
         }
 
-        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult CerrarSesion()
         {
@@ -179,6 +179,13 @@ namespace WorkshopUsuarios.Controllers
             {
                 return HttpContext.GetOwinContext().Authentication;
             }
+        }
+
+        public ActionResult ChangeLanguage(string lang)
+        {
+            Thread.CurrentThread.CurrentCulture =
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+            return View("Index",RepositorioUsuario);
         }
 
     }

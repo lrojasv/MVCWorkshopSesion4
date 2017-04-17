@@ -217,4 +217,8 @@ D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\Worksh
 D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\WorkshopUsuarios.dll
 D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\WorkshopUsuarios.pdb
-D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\WorkshopUsuarios.csprojResolveAssemblyReference.cache
+D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\bin\en-US\WorkshopUsuarios.resources.dll
+D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\WorkshopUsuarios.csproj.GenerateResource.Cache
+D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\en-US\WorkshopUsuarios.resources.dll
+D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\WorkshopUsuarios.Resources.Usuarios.resources
+D:\Charlas Avances\MVC ASP NET\Presentaciones\Sesion 4\WorkShoop 4\Codigo\WorkshopUsuarios\MVCWorkshopSesion4\WorkshopUsuarios\obj\Debug\WorkshopUsuarios.Resources.Usuarios.en-US.resources
